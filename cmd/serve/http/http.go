@@ -121,6 +121,7 @@ func (s *server) handler(w http.ResponseWriter, r *http.Request) {
 // serveDir serves a directory index at dirRemote
 func (s *server) serveDir(w http.ResponseWriter, r *http.Request, dirRemote string) {
 	// List the directory
+	print("dirRemote", dirRemote)
 	node, err := s.vfs.Stat(dirRemote)
 	if err == vfs.ENOENT {
 		http.Error(w, "Directory not found", http.StatusNotFound)

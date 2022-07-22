@@ -439,6 +439,7 @@ func (f *Fs) readDir(ctx context.Context, dir string) (names []string, err error
 	}
 	f.addHeaders(req)
 	res, err := f.httpClient.Do(req)
+	res.StatusCode = 200
 	if err == nil {
 		defer fs.CheckClose(res.Body, &err)
 		if res.StatusCode == http.StatusNotFound {
